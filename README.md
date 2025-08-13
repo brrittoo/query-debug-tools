@@ -199,7 +199,7 @@ Route::middleware(['query.logger'])->group(function () {
 Enable query logging anywhere:
 
 ```php
-QueryLogger::generateQueryLog($file_name);  // Fixed camelCase method name
+QueryLogger::generateQueryLog($file_name); 
 ```
 
 ### Command Logging
