@@ -30,7 +30,7 @@
         | Location where query log files will be stored.
         |
         */
-        'storage_path' => env('QUERY_LOGGER_STORAGE_PATH', storage_path('logs/querylog')),
+        'storage_path' => storage_path('logs/querylog'),
 
         /*
         |--------------------------------------------------------------------------
@@ -120,5 +120,5 @@
         | Maximum number of backtrace frames to log.
         |
         */
-        'backtrace_depth' => env('QUERY_LOGGER_BACKTRACE_DEPTH', 5),
+        'backtrace_depth' => env('QUERY_LOGGER_BACKTRACE_DEPTH', 20),
     ];

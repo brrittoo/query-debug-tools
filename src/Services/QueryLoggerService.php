@@ -152,35 +152,66 @@
             if(!$this->config['log_backtrace']){
                 return $sources;
             }
-
-			$backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, $this->config['backtrace_depth']);
-
+			
+			$backtrace = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, $this->config['backtrace_depth'] + 2);
+			
 			foreach ($backtrace as $trace) {
 				if (isset($trace['file']) && isset($trace['line'])) {
-					if (!$this->isVendorFile($trace['file'])) {
-						$sources[] = [
-							'file' => $trace['file'],
-							'line' => $trace['line']
-						];
+					
+					if ($this->shouldSkipFile($trace['file'])) {
+						continue;
+					}
+					
+					$source = [
+						'file' => $trace['file'],
+						'line' => $trace['line'],
+						'class' => $trace['class'] ?? null,
+						'type' => $trace['type'] ?? null,   // '::' for static, '->' for instance
+						'function' => $trace['function'] ?? null,
+					];
+					
+				
+					if (!empty($trace['args'])) {
+						$source['args'] = $this->formatArguments($trace['args']);
+					}
+					
+					$sources[] = $source;
+					
+					
+					if (count($sources) >= $this->config['backtrace_depth']) {
+						break;
 					}
 				}
 			}
-
-			if (empty($sources)) {
-				throw QueryLoggerException::sourceNotDeterminable();
-			}
-
+			
 			return $sources;
 		}
-
-		protected function isVendorFile(string $filePath): bool
+		
+		
+		protected function formatArguments(array $args): array
+		{
+			return array_map(function ($arg) {
+				if (is_object($arg)) {
+					return get_class($arg);
+				}
+				if (is_array($arg)) {
+					return 'Array(' . count($arg) . ')';
+				}
+				if (is_resource($arg)) {
+					return 'Resource';
+				}
+				return $arg;
+			}, $args);
+		}
+		
+		protected function shouldSkipFile(string $filePath): bool
 		{
 			return strpos($filePath, 'vendor') !== false ||
 				strpos($filePath, 'Middleware') !== false ||
 				strpos($filePath, 'public') !== false ||
-				strpos($filePath, 'server') !== false;
+				strpos($filePath, 'server') !== false ||
+				str_contains($filePath, 'QueryLoggerService.php');
 		}
-
 		protected function writeLogEntry(QueryLog $logEntry): void
 		{
 			$content = $this->config['log_format'] === 'json'
@@ -189,4 +220,14 @@
 
 			$this->storageManager->appendToLog($this->currentLogFile, $content);
 		}
+		
+		
+		public function generateQueryLog(string $fileName): void
+		{
+			
+			$this->currentLogFile = $this->storageManager->prepareLogFile($fileName);
+			
+			$this->enableForFile($fileName);
+		}
+
 	}
