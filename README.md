@@ -72,7 +72,7 @@ The published configuration is located at `config/querylogger.php`:
         | Location where query log files will be stored.
         |
         */
-        'storage_path' => env('QUERY_LOGGER_STORAGE_PATH', storage_path('logs/querylog')),
+        'storage_path' => storage_path('logs/querylog'),
 
         /*
         |--------------------------------------------------------------------------
