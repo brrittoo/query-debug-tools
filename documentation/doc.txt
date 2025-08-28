@@ -34,6 +34,9 @@ Publish configuration:
 php artisan vendor:publish --provider="Brrittoo\UrlEncoder\UrlEncoderServiceProvider" --tag="url-encoder-config"
 
 
+
+
+
 ✅ Symlinks the clone; changes reflect immediately.
 
 Contributing
