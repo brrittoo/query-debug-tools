@@ -1,8 +1,8 @@
 # Query Logger for Laravel
 
-[![Latest Version](https://img.shields.io/packagist/v/querylogger/debug-tools.svg?style=flat-square)](https://packagist.org/packages/querylogger/debug-tools)
-[![Total Downloads](https://img.shields.io/packagist/dt/querylogger/debug-tools.svg?style=flat-square)](https://packagist.org/packages/querylogger/debug-tools)
-[![License](https://img.shields.io/packagist/l/querylogger/debug-tools.svg?style=flat-square)](https://packagist.org/packages/querylogger/debug-tools)
+[![Latest Version](https://img.shields.io/packagist/v/brrittoo/query-debug-tools.svg?style=flat-square)](https://packagist.org/packages/brrittoo/query-debug-tools)
+[![Total Downloads](https://img.shields.io/packagist/dt/brrittoo/query-debug-tools.svg?style=flat-square)](https://packagist.org/packages/brrittoo/query-debug-tools)
+[![License](https://img.shields.io/packagist/l/brrittoo/query-debug-tools.svg?style=flat-square)](https://packagist.org/packages/brrittoo/query-debug-tools)
 
 Effortlessly log, monitor, and debug all database queries in your Laravel applications with detailed execution insights, source tracking, and customizable storag
 
