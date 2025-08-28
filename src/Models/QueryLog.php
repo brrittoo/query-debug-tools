@@ -1,6 +1,6 @@
 <?php
 	
-	namespace QueryLogger\Models;
+	namespace Brrittoo\QueryLogger\Models;
 	
 	class QueryLog
 	{

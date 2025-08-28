@@ -1,10 +1,10 @@
 <?php
 
-	namespace QueryLogger\Providers;
+	namespace Brrittoo\QueryLogger\Providers;
 
 	use Illuminate\Support\ServiceProvider;
-	use QueryLogger\Services\QueryLoggerService;
-	use QueryLogger\Middleware\QueryLoggerMiddleware;
+	use Brrittoo\QueryLogger\Services\QueryLoggerService;
+	use Brrittoo\QueryLogger\Middleware\QueryLoggerMiddleware;
 
 	class QueryLoggerServiceProvider extends ServiceProvider
 	{
@@ -26,7 +26,9 @@
 		public function boot()
 		{
             if (config('querylogger.enabled')) {
-                $this->registerMiddleware();
+	            $this->app->booted(function () {
+		            $this->registerMiddleware();
+	            });
             }
 			$this->publishes([
 				__DIR__.'/../../config/querylogger.php' => config_path('querylogger.php'),

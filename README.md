@@ -26,13 +26,14 @@ Effortlessly log, monitor, and debug all database queries in your Laravel applic
 Install via Composer:
 
 ```bash
-composer require querylogger/debug-tools
+composer require brrittoo/query-debug-tools
 ```
 
 Publish the configuration file:
 
 ```bash
-php artisan vendor:publish --provider="QueryLogger\Providers\QueryLoggerServiceProvider" --tag="query-logger-config"
+php artisan vendor:publish --provider="Brrittoo\QueryLogger\Providers\QueryLoggerServiceProvider" 
+--tag="query-logger-config"
 ```
 
 ---
@@ -52,6 +53,16 @@ The published configuration is located at `config/querylogger.php`:
         |
         */
         'enabled' => env('QUERY_LOGGER_ENABLED', true),
+        
+        	    /*
+		|--------------------------------------------------------------------------
+		| Query Logger Enable
+		|--------------------------------------------------------------------------
+		|
+		| Enable or disable query logging globally.
+		|
+		*/
+	    'enable_generate_multiple_files_in_same_file' => env('QUERY_LOGGER_MULTIPLE_FILES', true),
 
         /*
         |--------------------------------------------------------------------------
@@ -176,12 +187,16 @@ The published configuration is located at `config/querylogger.php`:
 Set these in your `.env`:
 
 ```dotenv
-QUERY_LOGGER_ENABLED=true
-QUERY_LOGGER_RETENTION_DAYS=15
-QUERY_LOGGER_SLOW_QUERY_THRESHOLD=1000  # Threshold in milliseconds to consider a query as slow
-QUERY_LOGGER_FORMAT=plain # or json
-QUERY_LOGGER_LOG_BACKTRACE=false # Enable logging of the backtrace for each query (true/false)
-QUERY_LOGGER_BACKTRACE_DEPTH=5 # Depth of the backtrace to log. Only effective if QUERY_LOGGER_LOG_BACKTRACE=true
+| Variable                            | Default | Description                                                                            |
+| ----------------------------------- | ------- | -------------------------------------------------------------------------------------- |
+| `QUERY_LOGGER_ENABLED`              | `true`  | Enable or disable query logging globally.                                              |
+| `QUERY_LOGGER_MULTIPLE_FILES`       | `true`  | Generate multiple log files per day. Set `false` to append to a single daily log file. |
+| `QUERY_LOGGER_RETENTION_DAYS`       | `15`    | Number of days to keep old logs; older logs will be deleted automatically.             |
+| `QUERY_LOGGER_SLOW_QUERY_THRESHOLD` | `1000`  | Threshold in milliseconds to consider a query as slow.                                 |
+| `QUERY_LOGGER_FORMAT`               | `plain` | Log format: `plain` or `json`.                                                         |
+| `QUERY_LOGGER_LOG_BACKTRACE`        | `false` | Enable logging of backtrace for each query.                                            |
+| `QUERY_LOGGER_BACKTRACE_DEPTH`      | `5`     | Depth of backtrace to log (only used if backtrace logging is enabled).                 |
+
 ```
 
 ### Middleware

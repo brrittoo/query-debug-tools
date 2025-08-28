@@ -1,6 +1,6 @@
 <?php
 	
-	namespace QueryLogger\Helpers;
+	namespace Brrittoo\QueryLogger\Helpers;
 	
 	class QueryFormatter
 	{

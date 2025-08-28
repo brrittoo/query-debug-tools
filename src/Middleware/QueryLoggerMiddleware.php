@@ -1,9 +1,9 @@
 <?php
 
-	namespace QueryLogger\Middleware;
+	namespace Brrittoo\QueryLogger\Middleware;
 
 	use Closure;
-	use QueryLogger\Services\QueryLoggerService;
+	use Brrittoo\QueryLogger\Services\QueryLoggerService;
 	use Illuminate\Http\Request;
 
 	class QueryLoggerMiddleware

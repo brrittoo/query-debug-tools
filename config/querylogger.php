@@ -10,6 +10,17 @@
         |
         */
         'enabled' => env('QUERY_LOGGER_ENABLED', true),
+	    
+	    
+	    /*
+		|--------------------------------------------------------------------------
+		| Query Logger Enable
+		|--------------------------------------------------------------------------
+		|
+		| Enable or disable query logging globally.
+		|
+		*/
+	    'enable_generate_multiple_files_in_same_file' => env('QUERY_LOGGER_MULTIPLE_FILES', true),
 
         /*
         |--------------------------------------------------------------------------

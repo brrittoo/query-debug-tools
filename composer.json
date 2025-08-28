@@ -1,5 +1,5 @@
 {
-    "name": "querylogger/debug-tools",
+    "name": "brrittoo/query-debug-tools",
     "description": "Advanced Database Query Logging & Performance Monitor",
     "type": "library",
     "license": "MIT",
@@ -35,21 +35,21 @@
     },
     "autoload": {
         "psr-4": {
-            "QueryLogger\\": "src/"
+            "Brrittoo\\QueryLogger\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "QueryLogger\\Tests\\": "tests/"
+            "Brrittoo\\QueryLogger\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "QueryLogger\\Providers\\QueryLoggerServiceProvider"
+                "Brrittoo\\QueryLogger\\Providers\\QueryLoggerServiceProvider"
             ],
             "aliases": {
-                "QueryLogger": "QueryLogger\\Facades\\QueryLogger"
+                "QueryLogger": "Brrittoo\\QueryLogger\\Facades\\QueryLogger"
             }
         }
     },

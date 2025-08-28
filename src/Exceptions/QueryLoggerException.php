@@ -1,6 +1,6 @@
 <?php
 	
-	namespace QueryLogger\Exceptions;
+	namespace Brrittoo\QueryLogger\Exceptions;
 	
 	use Exception;
 	

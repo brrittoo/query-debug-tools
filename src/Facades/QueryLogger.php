@@ -1,6 +1,6 @@
 <?php
 	
-	namespace QueryLogger\Facades;
+	namespace Brrittoo\QueryLogger\Facades;
 	
 	use Illuminate\Support\Facades\Facade;
 	

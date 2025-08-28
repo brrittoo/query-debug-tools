@@ -1,12 +1,12 @@
 <?php
 
-	namespace QueryLogger\Services;
+	namespace Brrittoo\QueryLogger\Services;
 
-	use QueryLogger\Contracts\QueryLoggerInterface;
-	use QueryLogger\Exceptions\QueryLoggerException;
-	use QueryLogger\Helpers\QueryFormatter;
-	use QueryLogger\Helpers\StorageManager;
-	use QueryLogger\Models\QueryLog;
+	use Brrittoo\QueryLogger\Contracts\QueryLoggerInterface;
+	use Brrittoo\QueryLogger\Exceptions\QueryLoggerException;
+	use Brrittoo\QueryLogger\Helpers\QueryFormatter;
+	use Brrittoo\QueryLogger\Helpers\StorageManager;
+	use Brrittoo\QueryLogger\Models\QueryLog;
 	use Illuminate\Support\Facades\DB;
 	use Illuminate\Support\Facades\Auth;
 

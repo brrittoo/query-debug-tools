@@ -1,6 +1,6 @@
 <?php
 	
-	namespace QueryLogger\Helpers;
+	namespace Brrittoo\QueryLogger\Helpers;
 	
 	use Illuminate\Support\Facades\File;
 	use Carbon\Carbon;
@@ -26,9 +26,20 @@
 			$this->ensureDirectoryExists($directory);
 			$this->cleanOldLogs();
 			
-			$fileName = "{$baseName}-{$date}-{$time}.log";
+			// Check config
+			$multipleFiles = config('querylogger.enable_generate_multiple_files_in_same_file', true);
+			
+			if ($multipleFiles) {
+				// Each run = new file with timestamp
+				$fileName = "{$baseName}-{$date}-{$time}.log";
+			} else {
+				// Single file for the day (append logs)
+				$fileName = "{$baseName}-{$date}.log";
+			}
+			
 			return $directory . '/' . $fileName;
 		}
+
 		
 		public function appendToLog(string $filePath, string $content): void
 		{

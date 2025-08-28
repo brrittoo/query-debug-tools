@@ -1,6 +1,6 @@
 <?php
 	
-	namespace QueryLogger\Contracts;
+	namespace Brrittoo\QueryLogger\Contracts;
 	
 	interface QueryLoggerInterface
 	{
